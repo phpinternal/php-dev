@@ -1,0 +1,53 @@
+# see https://gohugo.io/getting-started/configuration/ for list of options
+#baseURL = "https://php.github.io/php-rfcs/"
+#relativeURLs = true
+languageCode = "en-us"
+title = "PHP RFC's"
+theme = "php"
+description	= "Description here"
+timezone = "Europe/London"
+permalink = ":year/:month/:title"
+footnoteReturnLinkContents = "^"
+# TODO: enable after some sontent committed
+#enableGitInfo = true
+enableRobotsTXT = true
+
+[params]
+css = [ "css/wiki.css" ]
+highlight = true
+# highlightStyle = "solarized-dark"
+highlightStyle = "github-gist"
+highlightLanguages = ["php"]
+githubRepository = "brzuchal/php-dev"
+
+[sitemap]
+changefreq = "weekly"
+filename = "sitemap.xml"
+priority = 0.5
+
+[taxonomies]
+status = "statuses"
+
+[menu]
+  [[menu.main]]
+  identifier = "index"
+  name = "home"
+  pre = "<i class='fa fa-home'></i>"
+  url = "/"
+  weight = -1000
+
+  [[menu.main]]
+  name = "rfc"
+  post = "<span class='alert'>RFC List</span>"
+  url = "/rfc/"
+  weight = -100
+
+  [[menu.icon]]
+  url = "https://github.com/php/php-rfcs"
+  name = "github"
+  weight = 2
+
+  [[menu.icon]]
+  url = "https://twitter.com/official_php"
+  name = "twitter"
+  weight = 3
