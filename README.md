@@ -16,9 +16,10 @@ community members who do not have php.net accounts basically can't
 suggest changes.
 
 ## TODO
-[ ] Figure out what is a good alternative.
-[ ] Figure out how we can generate CSS that maintains the PHP.net brand
-[ ] Make a list of what pages should be kept from: https://wiki.php.net/?do=index
+
+* [ ] Figure out what is a good alternative.
+* [ ] Figure out how we can generate CSS that maintains the PHP.net brand
+* [ ] Make a list of what pages should be kept from: https://wiki.php.net/?do=index
 
 ## Usage
 

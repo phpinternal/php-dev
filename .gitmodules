@@ -1,0 +1,3 @@
+[submodule "themes/php"]
+	path = themes/php
+	url = https://github.com/brzuchal/php-hugo-theme.git
