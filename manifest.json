@@ -1,0 +1,17 @@
+{
+  "display": "standalone",
+  "scope": "\/",
+  "name": "PHP Wiki",
+  "short_name": "PHP Wiki",
+  "description": "",
+  "start_url": "\/",
+  "background_color": "#fff",
+  "theme_color": "#8892BF",
+  "icons": [
+    {
+      "src": "https:\/\/wiki.php.net\/_media\/wiki\/dokuwiki.svg",
+      "sizes": "17x17 512x512",
+      "type": "image\/svg+xml"
+    }
+  ]
+}
