@@ -1,5 +1,5 @@
 # see https://gohugo.io/getting-started/configuration/ for list of options
-#baseURL = "https://php.github.io/php-rfcs/"
+baseURL = "https://brzuchal.github.io/php-dev/"
 #relativeURLs = true
 languageCode = "en-us"
 title = "PHP RFC's"
