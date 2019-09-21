@@ -18,8 +18,23 @@ suggest changes.
 ## TODO
 
 * [ ] Figure out what is a good alternative.
-* [ ] Figure out how we can generate CSS that maintains the PHP.net brand
-* [ ] Make a list of what pages should be kept from: https://wiki.php.net/?do=index
+* [x] Figure out how we can generate CSS that maintains the PHP.net 
+  brand - this is handled in theme repository
+* [ ] Make a list of what pages should be kept from: 
+  [PHP Wiki Index](https://wiki.php.net/?do=index)
+* [ ] Convert DokuWiki to Markdown documents using 
+  [this tool](https://github.com/wgroeneveld/dokuwiki-to-hugo)
+  (remember to include Frontmatter data, generated files may need 
+  some cleaning in tags)
+
+## Contributing
+
+This repository needs Hugo installed locally to build and server static files.
+Follow the [installation guide](https://gohugo.io/getting-started/installing/)
+instructions.
+
+Docker image can be also used if you don't want to install Hugo locally
+then running commands through `make` will use Hugo through Docker container.
 
 ## Usage
 
@@ -30,8 +45,8 @@ in *Hugo* - the template is in `/archetypes/rfc.md`):
 hugo new rfc/[rfc-name].md
 ```
 
-Rendering with *Hugo* requires invoking:
+Building and serving static files:
 
 ```bash
-hugo serve
+make serve
 ```
