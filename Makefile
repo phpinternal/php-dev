@@ -54,6 +54,11 @@ help:
 	} \
 	{ lastLine = $$0 }' $(MAKEFILE_LIST)
 
+## Pull gh-pages
+pull: clean
+	git fetch origin gh-pages
+	git worktree add -B gh-pages public gh-pages
+
 ## Build and serve static content
 serve:
 	$(HUGO) server --source=$(SOURCE) --watch=true --bind=$(BIND) --port=$(PORT) --destination=$(OUTPUT)
@@ -61,3 +66,15 @@ serve:
 ## Build static content
 build:
 	$(HUGO) --source=$(SOURCE) --destination=$(OUTPUT)
+
+clean:
+	rm -rf public resources
+	git worktree prune
+
+## Publish gh-pages
+publish:
+	cd public && git add --all && git commit -m "Publishing to gh-pages" && cd ..
+	git push origin gh-pages
+
+## Update gh-pages
+all: clean pull build publish
