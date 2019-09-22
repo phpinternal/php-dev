@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>PHP project coordination on PHP RFC&#39;s</title>
-    <link>https://brzuchal.github.io/php-dev/</link>
-    <description>Recent content in PHP project coordination on PHP RFC&#39;s</description>
+    <title>Pages on PHP RFC&#39;s</title>
+    <link>https://brzuchal.github.io/php-dev/page/</link>
+    <description>Recent content in Pages on PHP RFC&#39;s</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sun, 22 Sep 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://brzuchal.github.io/php-dev/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://brzuchal.github.io/php-dev/page/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -40,17 +41,6 @@ Setup easier to use wiki The number of people who are able to edit our wiki are 
       <description>ext/* - Resource to object conversion in extensions The &amp;lsquo;resource&amp;rsquo; type was needed before PHP had classes to represent non-trivial types. However since PHP now has classes, it would be good to replace the resource types used internally.
 Link: https://github.com/php-pecl/ProjectCoordination/blob/master/change_resource_to_specific_type.md
 Core - Annotate internal function types We now have the capabilty to add type information to PHP core functions. The work is not difficult, but there is a large amount of it.</description>
-    </item>
-    
-    <item>
-      <title>Union types</title>
-      <link>https://brzuchal.github.io/php-dev/rfc/union_types_v2/</link>
-      <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://brzuchal.github.io/php-dev/rfc/union_types_v2/</guid>
-      <description>Introduction A &amp;ldquo;union type&amp;rdquo; accepts values of multiple different types, rather than a single one. PHP already supports two special union types:
- Type or null, using the special ?Type syntax. array or Traversable, using the special iterable type.  However, arbitrary union types are currently not supported by the language. Instead, phpdoc annotations have to be used, such as in the following example:
-class Number { /** * @var int|float $number */ private $number; /** * @param int|float $number */ public function setNumber($number) { $this-&amp;gt;number = $number; } /** * @return int|float */ public function getNumber() { return $this-&amp;gt;number; } }  The statistics section shows that the use of union types is indeed pervasive in the open-source ecosystem, as well as PHP&amp;rsquo;s own standard library.</description>
     </item>
     
   </channel>
