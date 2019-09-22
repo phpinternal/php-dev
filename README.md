@@ -39,11 +39,13 @@ then running commands through `make` will use Hugo through Docker container.
 ## Usage
 
 Creating new content of type *RFC* (these are called _Archetypes_ 
-in *Hugo* - the template is in `/archetypes/rfc.md`):
+in *Hugo* - the template is in `/theme/php/archetypes/rfc.md`):
 
 ```bash
-hugo new rfc/[rfc-name].md
+make new name=rfc/[rfc-name].md
 ```
+
+Possible archetypes to use: `rfc`, `page`
 
 Building and serving static files:
 

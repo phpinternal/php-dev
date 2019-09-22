@@ -6,10 +6,8 @@ title = "PHP RFC's"
 theme = "php"
 description	= "Description here"
 timezone = "Europe/London"
-permalink = ":year/:month/:title"
 footnoteReturnLinkContents = "^"
-# TODO: enable after some sontent committed
-#enableGitInfo = true
+enableGitInfo = true
 enableRobotsTXT = true
 
 [params]
@@ -31,14 +29,20 @@ status = "statuses"
 [menu]
   [[menu.main]]
   identifier = "index"
-  name = "home"
+  name = "Start"
   pre = "<i class='fa fa-home'></i>"
   url = "/"
   weight = -1000
 
   [[menu.main]]
-  name = "rfc"
-  post = "<span class='alert'>RFC List</span>"
+  name = "RFC"
+  post = "<i class='fa fa-check'></i>"
+  url = "/rfc/"
+  weight = -100
+
+  [[menu.main]]
+  name = "Pages"
+  post = "<i class='fa fa-file'></i>"
   url = "/rfc/"
   weight = -100
 

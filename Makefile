@@ -57,7 +57,7 @@ help:
 ## Pull gh-pages
 pull: clean
 	git fetch origin gh-pages
-	git worktree add -B gh-pages public gh-pages
+	git worktree add -B gh-pages public origin/gh-pages
 
 ## Build and serve static content
 serve:
@@ -78,3 +78,10 @@ publish:
 
 ## Update gh-pages
 all: clean pull build publish
+
+## Create new content file
+new:
+ifndef name
+	$(error "Missing 'name=[type/document_name].md'")
+endif
+	$(HUGO) new $(name)
