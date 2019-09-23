@@ -26,7 +26,8 @@
   <url>
     <loc>https://brzuchal.github.io/php-dev/page/</loc>
     <lastmod>2019-09-22T07:51:28+02:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -52,7 +53,8 @@
   
   <url>
     <loc>https://brzuchal.github.io/php-dev/statuses/</loc>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
 </urlset>
