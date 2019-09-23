@@ -65,7 +65,7 @@ serve:
 
 ## Build static content
 build:
-	$(HUGO) --source=$(SOURCE) --destination=$(OUTPUT) --gc --minify --cleanDestinationDir
+	$(HUGO) --source=$(SOURCE) --destination=$(OUTPUT)
 
 clean:
 	rm -rf public resources
