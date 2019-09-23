@@ -81,7 +81,7 @@ publish@gh:
 	git config --global user.email "michal.brzuchalski@gmail.com"
 	git config --global user.name "Micha Brzuchalski"
 	cd public && git add --all && git commit -m "Publishing to gh-pages" && cd ..
-	git remote set-url origin "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
+	git remote set-url origin "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 	git push origin gh-pages
 
 ## Update gh-pages
