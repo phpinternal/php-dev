@@ -31,7 +31,7 @@ ifndef HUGO
     DOCKER := $(shell command -v docker 2> /dev/null)
     ifdef DOCKER
     OUTPUT_HOST := $(OUTPUT)
-    HUGO=$(DOCKER) run --rm=true -it -v $(PWD):/src -v $(OUTPUT_HOST):/output -p $(PORT):$(PORT) jojomi/hugo /usr/local/sbin/hugo
+    HUGO=$(DOCKER) run --rm=true -i -v $(PWD):/src -v $(OUTPUT_HOST):/output -p $(PORT):$(PORT) jojomi/hugo /usr/local/sbin/hugo
     override SOURCE="/src"
     override OUTPUT="/output"
    	else
