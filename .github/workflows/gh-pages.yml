@@ -7,5 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Update gh-pages
-      run: make all
+    - name: Build
+      run: make build
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v2.3.2
+      env:
+        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./public
