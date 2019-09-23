@@ -73,13 +73,19 @@ clean:
 
 ## Publish gh-pages
 publish:
-	git config --global user.email "michal.brzuchalski@gmail.com"
-	git config --global user.name "Micha Brzuchalski"
 	cd public && git add --all && git commit -m "Publishing to gh-pages" && cd ..
 	git push origin gh-pages
 
+## Publish gh-pages
+publish@gh:
+	git config --global user.email "michal.brzuchalski@gmail.com"
+	git config --global user.name "Micha Brzuchalski"
+	cd public && git add --all && git commit -m "Publishing to gh-pages" && cd ..
+	git remote set-url origin "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
+	git push origin gh-pages
+
 ## Update gh-pages
-all: clean pull build publish
+all: clean pull build publish@gh
 
 ## Create new content file
 new:
