@@ -2,10 +2,12 @@
 .DEFAULT_GOAL := serve
 .PHONY: help build serve new clean
 
-COLOR_RESET   = \033[0m
-COLOR_INFO    = \033[32m
-COLOR_COMMENT = \033[33m
-COLOR_ERROR   = \033[31m
+COLOR_RESET=\033[0m
+COLOR_INFO=\033[32m
+COLOR_COMMENT=\033[33m
+COLOR_ERROR=\033[31m
+USER_EMAIL=$(shell git config --get user.email)
+USER_NAME=$(shell git config --get user.name)
 
 ifneq ($(shell [ -e .env ] && echo yes),yes)
 $(shell cp .env.dist .env)
@@ -73,6 +75,12 @@ clean:
 
 ## Publish gh-pages
 publish:
+ifndef USER_EMAIL
+	git config --global user.email "michal.brzuchalski@gmail.com"
+endif
+ifndef USER_NAME
+	git config --global user.name "Micha Brzuchalski"
+endif
 	cd public && git add --all && git commit -m "Publishing to gh-pages" && cd ..
 	git push origin gh-pages
 
