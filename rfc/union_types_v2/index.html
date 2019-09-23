@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Union types</title>
+        <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,400italic,600italic|Source+Code+Pro&amp;subset=latin,latin-ext" rel="stylesheet">
+        <link rel="shortcut icon" href="//php.net/favicon.ico">
+        
+        
+        <link media="all" rel="stylesheet" href="https://brzuchal.github.io/php-dev/css/default.css"/>
+ <link media="all" rel="stylesheet" href="https://brzuchal.github.io/php-dev/css/wiki.css"> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"> 
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/php.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.58.1" />
+        
+        <link rel="manifest" href="https://brzuchal.github.io/php-dev/manifest.json" />
+
+        
+    </head>
+    <body>
+         
+        <a id="top"></a>
+        <div class="wrap">
+            <header class='clearfix'>
+                <div id="mainmenu-toggle-overlay"></div>
+                <input type="checkbox" id="mainmenu-toggle">
+                <nav class="fullscreen">
+                    <div class="mainscreen">
+                        <a href="https://brzuchal.github.io/php-dev/" class="home"><img src="//php.net/images/logo.php" width="48" height="24" alt="php"><span class="subdomain">PHP RFC&#39;s</span></a>
+                        
+                        <ul>
+                            
+                            <li><a href="/php-dev/"><i class='fa fa-home'></i> Start </a></li>
+                            
+                            <li><a href="/php-dev/rfc/"> Pages <i class='fa fa-file'></i></a></li>
+                            
+                            <li><a href="/php-dev/rfc/"> RFC <i class='fa fa-check'></i></a></li>
+                            
+                        </ul>
+                        
+                    </div>
+                    <div class="secondscreen">
+                        
+                        <ul >
+                            
+                            <li><a href="https://github.com/php/php-rfcs"><i class="fa fa-github"></i></a></li>
+                            
+                            <li><a href="https://twitter.com/official_php"><i class="fa fa-twitter"></i></a></li>
+                            
+                        </ul>
+                        
+                    </div>
+                </nav>
+            </header>
+            <div id="flash-message"></div>
+            <nav id="megadropdown"></nav>
+
+            <section class="fullscreen clearfix">
+
+
+<section class="mainscreen">
+<div id="dokuwiki__site">
+    <div class="wrapper group">
+        
+        <div id="dokuwiki__pagetools">
+            <h3 class="a11y">Page Tools</h3>
+            <div class="tools">
+                <ul>
+                    <li>
+                        <a href="https://github.com/brzuchal/php-dev/blob/master/content/rfc/0000-union-types-v2.md" class="action edit" accesskey="e" rel="nofollow" title="Edit this page [E]">
+                            <span>Page source</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/brzuchal/php-dev/edit/master/content/rfc/0000-union-types-v2.md" class="action edit" accesskey="e" rel="nofollow" title="Edit this page [E]">
+                            <span>Edit this page</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/brzuchal/php-dev/commits/master/content/rfc/0000-union-types-v2.md" class="action revs" accesskey="o" rel="nofollow" title="Old revisions [O]">
+                            <span>Old revisions</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#top" class="action top" accesskey="t" rel="nofollow" title="Back to top [T]">
+                            <span>Back to top</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+
+        
+        
+
+        <h1>Union types</h1>
+
+        <ul>
+            <li>Tags:
+                
+                <a href="https://brzuchal.github.io/php-dev/tags/type_system">type_system</a>
+                
+            </li>
+            <li>Author: Nikita Popov &lt;nikic@php.net&gt;</li>
+            <li>Status: Under discussion</li>
+            <li>Date: 2019-09-02</li>
+            <li>Proposed version: PHP 8.0</li>
+            
+                <li>RFC PR: <a href="https://github.com/php/php-rfcs/pull/1">https://github.com/php/php-rfcs/pull/1</a></li>
+            
+                <li>Mailing list thread: <a href="https://externals.io/message/106844">https://externals.io/message/106844</a></li>
+            
+        </ul>
+
+
+        <br> <div class="text-justify">
+
+<h1 id="introduction">Introduction</h1>
+
+<p>A &ldquo;union type&rdquo; accepts values of multiple different types, rather than a single one. PHP already supports two special union types:</p>
+
+<ul>
+<li><code>Type</code> or <code>null</code>, using the special <code>?Type</code> syntax.</li>
+<li><code>array</code> or <code>Traversable</code>, using the special <code>iterable</code> type.</li>
+</ul>
+
+<p>However, arbitrary union types are currently not supported by the language. Instead, phpdoc annotations have to be used, such as in the following example:</p>
+
+<pre><code class="language-php">class Number {
+    /**
+     * @var int|float $number
+     */
+    private $number;
+
+    /**
+     * @param int|float $number
+     */
+    public function setNumber($number) {
+        $this-&gt;number = $number;
+    }
+
+    /**
+     * @return int|float
+     */
+    public function getNumber() {
+        return $this-&gt;number;
+    }
+}
+</code></pre>
+
+<p>The <a href="#statistics">statistics section</a> shows that the use of union types is indeed pervasive in the open-source ecosystem, as well as PHP&rsquo;s own standard library.</p>
+
+<p>Supporting union types in the language allows us to move more type information from phpdoc into function signatures, with the usual advantages this brings:</p>
+
+<ul>
+<li>Types are actually enforced, so mistakes can be caught early.</li>
+<li>Because they are enforced, type information is less likely to become outdated or miss edge-cases.</li>
+<li>Types are checked during inheritance, enforcing the Liskov Substitution Principle.</li>
+<li>Types are available through Reflection.</li>
+<li>The syntax is a lot less boilerplate-y than phpdoc.</li>
+</ul>
+
+<p>After generics, union types are currently the largest &ldquo;hole&rdquo; in our type declaration system.</p>
+
+<h1 id="proposal">Proposal</h1>
+
+<p>Union types are specified using the syntax <code>T1|T2|...</code> and can be used in all positions where types are currently accepted:</p>
+
+<pre><code class="language-php">class Number {
+    private int|float $number;
+
+    public function setNumber(int|float $number): void {
+        $this-&gt;number = $number;
+    }
+
+    public function getNumber(): int|float {
+        return $this-&gt;number;
+    }
+}
+</code></pre>
+
+<h2 id="supported-types">Supported Types</h2>
+
+<p>Union types support all types currently supported by PHP, with some caveats outlined in the following.</p>
+
+<h3 id="void-type"><code>void</code> type</h3>
+
+<p>The <code>void</code> type can never be part of a union. As such, types like <code>T|void</code> are illegal in all positions, including return types.</p>
+
+<p>The <code>void</code> type indicates that the function has no return value, and enforces that argument-less <code>return;</code> is used to return from the function. It is fundamentally incompatible with non-void return types.</p>
+
+<p>What is likely intended instead is <code>?T</code>, which allows returning either <code>T</code> or <code>null</code>.</p>
+
+<h3 id="nullable-union-types">Nullable union types</h3>
+
+<p>The <code>null</code> type is supported as part of unions, such that <code>T1|T2|null</code> can be used to create a nullable union. The existing <code>?T</code> notation is considered a shorthand for the common case of <code>T|null</code>.</p>
+
+<p>An earlier version of this RFC proposed to use <code>?(T1|T2)</code> for nullable union types instead, to avoid having two ways of expressing nullability in PHP. However, this notation is both rather awkward syntactically, and differs from the well-established <code>T1|T2|null</code> syntax used by phpdoc comments. The discussion feedback was overwhelmingly in favor of supporting the <code>T1|T2|null</code> notation.</p>
+
+<p><code>?T</code> remains valid syntax that denotes the same type as <code>T|null</code>. It is neither discouraged nor deprecated, and there are no plans to deprecate it in the future. It is merely a shorthand alias for a particularly common union type.</p>
+
+<p>The <code>null</code> type is only allowed as part of a union, and can not be used as a standalone type. Allowing it as a standalone type would make both <code>function foo(): void</code> and <code>function foo(): null</code> legal function signatures, with similar but not identical semantics. This would negatively impact teachability for an unclear benefit.</p>
+
+<p>Union types and the <code>?T</code> nullable type notation cannot be mixed. Writing <code>?T1|T2</code>, <code>T1|?T2</code> or <code>?(T1|T2)</code> is not supported and <code>T1|T2|null</code> needs to be used instead. I&rsquo;m open to permitting the <code>?(T1|T2)</code> syntax though, if this is considered desirable.</p>
+
+<h3 id="false-pseudo-type"><code>false</code> pseudo-type</h3>
+
+<p>While we nowadays encourage the use of <code>null</code> over <code>false</code> as an error or absence return value, for historical reasons many internal functions continue to use <code>false</code> instead. As shown in the <a href="#statistics">statistics section</a>, the vast majority of union return types for internal functions include <code>false</code>.</p>
+
+<p>A classical example is the <code>strpos()</code> family of functions, which returns <code>int|false</code>.</p>
+
+<p>While it would be possible to model this less accurately as <code>int|bool</code>, this gives the false impression that the function can also return a <code>true</code> value, which makes this type information significantly less useful to humans and static analyzers both.</p>
+
+<p>For this reason, support for the <code>false</code> pseudo-type is included in this proposal. A <code>true</code> pseudo-type is <em>not</em> part of the proposal, because similar historical reasons for its necessity do not exist.</p>
+
+<p>The <code>false</code> pseudo-type cannot be used as a standalone type (including nullable standalone type). As such, all of <code>false</code>, <code>false|null</code> and <code>?false</code> are not permitted.</p>
+
+<h3 id="duplicate-and-redundant-types">Duplicate and redundant types</h3>
+
+<p>To catch some simple bugs in union type declarations, redundant types that can be detected without performing class loading will result in a compile-time error. This includes:</p>
+
+<ul>
+<li>Each name-resolved type may only occur once. Types like <code>int|string|INT</code> result in an error.</li>
+<li>If <code>bool</code> is used, <code>false</code> cannot be used additionally.</li>
+<li>If <code>object</code> is used, class types cannot be used additionally.</li>
+<li>If <code>iterable</code> is used, <code>array</code> and <code>Traversable</code> cannot be used additionally.</li>
+</ul>
+
+<p>This does not guarantee that the type is &ldquo;minimal&rdquo;, because doing so would require loading all used class types.</p>
+
+<p>For example, if <code>A</code> and <code>B</code> are class aliases, then <code>A|B</code> remains a legal union type, even though it could be reduced to either <code>A</code> or <code>B</code>. Similarly, if <code>class B extends A {}</code>, then <code>A|B</code> is also a legal union type, even though it could be reduced to just <code>A</code>.</p>
+
+<pre><code class="language-php">function foo(): int|INT {} // Disallowed
+function foo(): bool|false {} // Disallowed
+
+use A as B;
+function foo(): A|B {} // Disallowed (&quot;use&quot; is part of name resolution)
+
+class_alias('X', 'Y');
+function foo(): X|Y {} // Allowed (redundancy is only known at runtime)
+</code></pre>
+
+<h3 id="type-grammar">Type grammar</h3>
+
+<p>Excluding the special <code>void</code> type, PHP&rsquo;s type syntax may now be described by the following grammar:</p>
+
+<pre><code>type: simple_type
+    | &quot;?&quot; simple_type
+    | union_type
+    ;
+
+union_type: simple_type &quot;|&quot; simple_type
+          | union_type &quot;|&quot; simple_type
+          ;
+
+simple_type: &quot;false&quot;          # only legal in unions
+           | &quot;null&quot;           # only legal in unions
+           | &quot;bool&quot;
+           | &quot;int&quot;
+           | &quot;float&quot;
+           | &quot;string&quot;
+           | &quot;array&quot;
+           | &quot;object&quot;
+           | &quot;iterable&quot;
+           | &quot;callable&quot;       # not legal in property types
+           | &quot;self&quot;
+           | &quot;parent&quot;
+           | namespaced_name
+           ;
+</code></pre>
+
+<h2 id="variance">Variance</h2>
+
+<p>Union types follow the existing variance rules:</p>
+
+<ul>
+<li>Return types are covariant (child must be subtype).</li>
+<li>Parameter types are contravariant (child must be supertype).</li>
+<li>Property types are invariant (child must be subtype and supertype).</li>
+</ul>
+
+<p>The only change is in how union types interact with subtyping, with three additional rules:</p>
+
+<ul>
+<li>A union <code>U_1|...|U_n</code> is a subtype of <code>V_1|...|V_m</code> if for each <code>U_i</code> there exists a <code>V_j</code> such that <code>U_i</code> is a subtype of <code>V_j</code>.</li>
+<li>The <code>iterable</code> type is considered to be the same (i.e. both subtype and supertype) as <code>array|Traversable</code>.</li>
+<li>The <code>false</code> pseudo-type is considered a subtype of <code>bool</code>.</li>
+</ul>
+
+<p>In the following, some examples of what is allowed and what isn&rsquo;t are given.</p>
+
+<h3 id="property-types">Property types</h3>
+
+<p>Property types are invariant, which means that types must stay the same during inheritance. However, the &ldquo;same&rdquo; type may be expressed in different ways. Prior to union types, one such possibility was to have two aliased classes <code>A</code> and <code>B</code>, in which case a property type may legally change from <code>A</code> to <code>B</code> or vice versa.</p>
+
+<p>Union types expand the possibilities in this area: For example <code>int|string</code> and <code>string|int</code> represent the same type. The following example shows a more complex case:</p>
+
+<pre><code class="language-php">class A {}
+class B extends A {}
+
+class Test {
+    public A|B $prop;
+}
+class Test2 extends Test {
+    public A $prop;
+}
+</code></pre>
+
+<p>In this example, the union <code>A|B</code> actually represents the same type as just <code>A</code>, and this inheritance is legal, despite the type not being syntactically the same.</p>
+
+<p>Formally, we arrive at this result as follows: First, <code>A</code> is a subtype of <code>A|B</code>, because it is a subtype of <code>A</code>. Second, <code>A|B</code> is a subtype of <code>A</code>, because <code>A</code> is a subtype of <code>A</code> and <code>B</code> is a subtype of <code>A</code>.</p>
+
+<h3 id="adding-and-removing-union-types">Adding and removing union types</h3>
+
+<p>It is legal to remove union types in return position and add union types in parameter position:</p>
+
+<pre><code class="language-php">class Test {
+    public function param1(int $param) {}
+    public function param2(int|float $param) {}
+
+    public function return1(): int|float {}
+    public function return2(): int {}
+}
+
+class Test2 extends Test {
+    public function param1(int|float $param) {} // Allowed: Adding extra param type
+    public function param2(int $param) {}       // FORBIDDEN: Removing param type
+
+    public function return1(): int {}           // Allowed: Removing return type
+    public function return2(): int|float {}     // FORBIDDEN: Adding extra return type
+}
+</code></pre>
+
+<h3 id="variance-of-individual-union-members">Variance of individual union members</h3>
+
+<p>Similarly, it is possible to restrict a union member in return position, or widen a union member in parameter position:</p>
+
+<pre><code class="language-php">class A {}
+class B extends A {}
+
+class Test {
+    public function param1(B|string $param) {}
+    public function param2(A|string $param) {}
+
+    public function return1(): A|string {}
+    public function return2(): B|string {}
+}
+
+class Test2 extends Test {
+    public function param1(A|string $param) {} // Allowed: Widening union member B -&gt; A
+    public function param2(B|string $param) {} // FORBIDDEN: Restricting union member A -&gt; B
+
+    public function return1(): B|string {}     // Allowed: Restricting union member A -&gt; B
+    public function return2(): A|string {}     // FORBIDDEN: Widening union member B -&gt; A
+}
+</code></pre>
+
+<p>Of course, the same can also be done with multiple union members at a time, and be combined with the addition/removal of types mentioned previously.</p>
+
+<h2 id="coercive-typing-mode">Coercive typing mode</h2>
+
+<p>When <code>strict_types</code> is not enabled, scalar type declarations are subject to limited implicit type coercions. These are problematic in conjunction with union types, because it is not always obvious which type the input should be converted to. For example, when passing a boolean to an <code>int|string</code> argument, both <code>0</code> and <code>&quot;&quot;</code> would be viable coercion candidates.</p>
+
+<p>If the exact type of the value is not part of the union, then the target type is chosen in the following order of preference:</p>
+
+<ol>
+<li><code>int</code></li>
+<li><code>float</code></li>
+<li><code>string</code></li>
+<li><code>bool</code></li>
+</ol>
+
+<p>If the type both exists in the union, and the value can be coerced to the type under PHPs existing type checking semantics, then the type is chosen. Otherwise the next type is tried.</p>
+
+<p>As an exception, if the value is a string and both <code>int</code> and <code>float</code> are part of the union, the preferred type is determined by the existing &ldquo;numeric string&rdquo; semantics. For example, for <code>&quot;42&quot;</code> we choose <code>int</code>, while for <code>&quot;42.0&quot;</code> we choose <code>float</code>.</p>
+
+<p>Types that are not part of the above preference list are not eligible targets for implicit coercion. In particular no implicit coercions to the <code>null</code> and <code>false</code> types occur.</p>
+
+<h3 id="conversion-table">Conversion Table</h3>
+
+<p>The following table shows how the above order of preference plays out for different input types, assuming that the exact type is not part of the union:</p>
+
+<table>
+<thead>
+<tr>
+<th>Original type</th>
+<th>1st try</th>
+<th>2nd try</th>
+<th>3rd try</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>bool</td>
+<td>int</td>
+<td>float</td>
+<td>string</td>
+</tr>
+
+<tr>
+<td>int</td>
+<td>float</td>
+<td>string</td>
+<td>bool</td>
+</tr>
+
+<tr>
+<td>float</td>
+<td>int</td>
+<td>string</td>
+<td>bool</td>
+</tr>
+
+<tr>
+<td>string</td>
+<td>int/float</td>
+<td>bool</td>
+<td></td>
+</tr>
+
+<tr>
+<td>object</td>
+<td>string</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="examples">Examples</h3>
+
+<pre><code class="language-php">// int|string
+42    --&gt; 42          // exact type
+&quot;42&quot;  --&gt; &quot;42&quot;        // exact type
+new ObjectWithToString --&gt; &quot;Result of __toString()&quot;
+                      // object never compatible with int, fall back to string
+42.0  --&gt; 42          // float compatible with int
+42.1  --&gt; 42          // float compatible with int
+1e100 --&gt; &quot;1.0E+100&quot;  // float too large for int type, fall back to string
+INF   --&gt; &quot;INF&quot;       // float too large for int type, fall back to string
+true  --&gt; 1           // bool compatible with int
+[]    --&gt; TypeError   // array not compatible with int or string
+
+// int|float|bool
+&quot;45&quot;    --&gt; 45        // int numeric string
+&quot;45.0&quot;  --&gt; 45.0      // float numeric string
+&quot;45X&quot;   --&gt; 45 + Notice: Non well formed numeric string
+                      // int numeric string
+&quot;&quot;      --&gt; false     // not numeric string, fall back to bool
+&quot;X&quot;     --&gt; true      // not numeric string, fall back to bool
+[]      --&gt; TypeError // array not compatible with int, float or bool
+</code></pre>
+
+<h3 id="alternatives">Alternatives</h3>
+
+<p>There are two main alternatives to the preference-based approach used by this proposal:</p>
+
+<p>The first is to specify that union types <em>always</em> use strict typing, thus avoiding any complicated coercion semantics altogether. Apart from the inconsistency this introduces in the language, this has two main disadvantages: First going from a type like <code>float</code> to <code>int|float</code> would actually <em>reduce</em> the number of valid inputs, which is highly unintuitive. Second, it breaks the variance model for union types, because we can no longer say that <code>float</code> is a subtype of <code>int|float</code>.</p>
+
+<p>The second is to perform the coercions based on the order of types. This would mean that <code>int|string</code> and <code>string|int</code> are distinct types, where the former would favor integers and the latter strings. Depending on whether exact type matches are still prioritized, the string type would <em>always</em> be used for the latter case. Once again, this is unintuitive and has very unclear implications for the subtyping relationship on which variance is based.</p>
+
+<h2 id="property-types-and-references">Property types and references</h2>
+
+<p>References to typed properties with union types follow the semantics outlined in the <a href="https://wiki.php.net/rfc/typed_properties_v2#general_semantics">typed properties RFC</a>:</p>
+
+<blockquote>
+<p>If typed properties are part of the reference set, then the value is checked against each property type. If a type check fails, a TypeError is generated and the value of the reference remains unchanged.</p>
+
+<p>There is one additional caveat: If a type check requires a coercion of the assigned value, it may happen that all type checks succeed, but result in different coerced values. As a reference can only have a single value, this situation also leads to a TypeError.</p>
+</blockquote>
+
+<p>The <a href="https://wiki.php.net/rfc/typed_properties_v2#future_interaction_with_union_types">interaction with union types</a> was already considered at the time, because it impacts the detailed reference semantics. Repeating the example given there:</p>
+
+<pre><code class="language-php">class Test {
+    public int|string $x;
+    public float|string $y;
+}
+$test = new Test;
+$r = &quot;foobar&quot;;
+$test-&gt;x =&amp; $r;
+$test-&gt;y =&amp; $r;
+
+// Reference set: { $r, $test-&gt;x, $test-&gt;y }
+// Types: { mixed, int|string, float|string }
+
+$r = 42; // TypeError
+</code></pre>
+
+<p>The basic issue is that the final assigned value (after type coercions have been performed) must be compatible with all types that are part of the reference set. However, in this case the coerced value will be <code>int(42)</code> for property <code>Test::$x</code>, while it will be <code>float(42.0)</code> for property <code>Test::$y</code>. Because these values are not the same, this is considered illegal and a <code>TypeError</code> is thrown.</p>
+
+<p>An alternative approach would be to cast the value to the only common type <code>string</code> instead, with the major disadvantage that this matches <em>neither</em> of the values you would get from a direct property assignment.</p>
+
+<h2 id="reflection">Reflection</h2>
+
+<p>To support union types, a new class <code>ReflectionUnionType</code> is added:</p>
+
+<pre><code class="language-php">class ReflectionUnionType extends ReflectionType {
+    /** @return ReflectionType[] */
+    public function getTypes();
+
+    /* Inherited from ReflectionType */
+    /** @return bool */
+    public function allowsNull();
+
+    /* Inherited from ReflectionType */
+    /** @return string */
+    public function __toString();
+}
+</code></pre>
+
+<p>The <code>getTypes()</code> method returns an array of <code>ReflectionType</code>s that are part of the union. The types may be returned in an arbitrary order that does not match the original type declaration. The types may also be subject to equivalence transformations.</p>
+
+<p>For example, the type <code>int|string</code> may return types in the order <code>[&quot;string&quot;, &quot;int&quot;]</code> instead. The type <code>iterable|array|string</code> might be canonicalized to <code>iterable|string</code> or <code>Traversable|array|string</code>. The only requirement on the Reflection API is that the ultimately represented type is equivalent.</p>
+
+<p>The <code>allowsNull()</code> method returns whether the union contains the type <code>null</code>.</p>
+
+<p>The <code>__toString()</code> method returns a string representation of the type that constitutes a valid code representation of the type in a non-namespaced context. It is not necessarily the same as what was used in the original code.</p>
+
+<p>For backwards-compatibility reasons, union types that only include <code>null</code> and one other type (written as <code>?T</code>, <code>T|null</code>, or through implicit parameter nullability), will instead use <code>ReflectionNamedType</code>.</p>
+
+<h3 id="examples-1">Examples</h3>
+
+<pre><code class="language-php">// This is one possible output, getTypes() and __toString() could
+// also provide the types in the reverse order instead.
+function test(): float|int {}
+$rt = (new ReflectionFunction('test'))-&gt;getReturnType();
+var_dump(get_class($rt));    // &quot;ReflectionUnionType&quot;
+var_dump($rt-&gt;allowsNull()); // false
+var_dump($rt-&gt;getTypes());   // [ReflectionType(&quot;int&quot;), ReflectionType(&quot;float&quot;)]
+var_dump((string) $rt);      // &quot;int|float&quot;
+
+function test2(): float|int|null {}
+$rt = (new ReflectionFunction('test2'))-&gt;getReturnType();
+var_dump(get_class($rt));    // &quot;ReflectionUnionType&quot;
+var_dump($rt-&gt;allowsNull()); // true
+var_dump($rt-&gt;getTypes());   // [ReflectionType(&quot;int&quot;), ReflectionType(&quot;float&quot;),
+                             //  ReflectionType(&quot;null&quot;)]
+var_dump((string) $rt); // &quot;int|float|null&quot;
+
+function test3(): int|null {}
+$rt = (new ReflectionFunction('test3'))-&gt;getReturnType();
+var_dump(get_class($rt));    // &quot;ReflectionNamedType&quot;
+var_dump($rt-&gt;allowsNull()); // true
+var_dump($rt-&gt;getName());    // &quot;int&quot;
+var_dump((string) $rt);      // &quot;int&quot; (deprecated)
+</code></pre>
+
+<h1 id="backwards-incompatible-changes">Backwards Incompatible Changes</h1>
+
+<p>This RFC does not contain any backwards incompatible changes. However, existing ReflectionType based code will have to be adjusted in order to support processing of code that uses union types.</p>
+
+<h1 id="future-scope">Future Scope</h1>
+
+<p>The features discussed in the following are <strong>not</strong> part of this proposal.</p>
+
+<h2 id="intersection-types">Intersection Types</h2>
+
+<p>Intersection types are logically conjugated with union types. Instead of requiring that (at least) a single type constraints is satisfied, all of them must be.</p>
+
+<p>For example <code>Traversable|Countable</code> requires that the passed value is either <code>Traversable</code> or <code>Countable</code>, while <code>Traversable&amp;Countable</code> requires that it is both.</p>
+
+<h2 id="mixed-type">Mixed Type</h2>
+
+<p>The <code>mixed</code> type allows to explicitly annotate that any value is acceptable. While specifying no type has the same behavior on the surface, it does not make clear whether the type is simply missing (because nobody bothered adding it yet, or because it can&rsquo;t be added for backwards compatibility reasons), or whether genuinely any value is acceptable.</p>
+
+<p>We&rsquo;ve held off on adding a <code>mixed</code> type out of fear that it would be used in cases where a more specific union could have been specified. Once union types are supported, it would probably also make sense to add the <code>mixed</code> type.</p>
+
+<h2 id="literal-types">Literal Types</h2>
+
+<p>The <code>false</code> pseudo-type introduced in this RFC is a special case of a &ldquo;literal type&rdquo;, such as supported by <a href="https://www.typescriptlang.org/docs/handbook/advanced-types.html#string-literal-types">TypeScript</a>. They allow specifying enum-like types, which are limited to specific values.</p>
+
+<pre><code class="language-php">type ArrayFilterFlags = 0|ARRAY_FILTER_USE_KEY|ARRAY_FILTER_USE_BOTH;
+array_filter(array $array, callable $callback, ArrayFilterFlags $flag): array;
+</code></pre>
+
+<p>A benefit of using a union of literal types instead of an enum, is that it works directly with values of the underlying type, rather than an opaque enum value. As such, it is easier to retrofit without breaking backwards-compatibility.</p>
+
+<p>This RFC intentionally supports the <code>false</code> type in a maximally restricted form, which is enough to model internal function return values, but avoids unnecessarily constraining a future proposal for introducing first-class literal types. In particular:</p>
+
+<ul>
+<li>No values implicitly coerce to <code>false</code>, while it would also be possible to follow <code>bool</code> parameter coercion semantics, restricted to input values that coerce to <code>false</code>. Both approaches have advantages, but we pick the conservative option, which permits future extension, here.</li>
+<li>Only <code>false</code> is supported, but not <code>true</code>. Once both are supported, the subtyping relationship between <code>false|true</code> and <code>bool</code> needs to be defined (which is also tightly related to the question of implicit coercions).</li>
+</ul>
+
+<h2 id="type-aliases">Type Aliases</h2>
+
+<p>As types become increasingly complex, it may be worthwhile to allow reusing type declarations. There are two general ways in which this could work. One is a local alias, such as:</p>
+
+<pre><code class="language-php">use int|float as number;
+
+function foo(number $x) {}
+</code></pre>
+
+<p>In this case <code>number</code> is a symbol that is only visible locally and will be resolved to the original <code>int|float</code> type during compilation.</p>
+
+<p>The second possibility is an exported typedef:</p>
+
+<pre><code class="language-php">namespace Foo;
+type number = int|float;
+
+// Usable as \Foo\number from elsewhere
+</code></pre>
+
+<h1 id="proposed-voting-choices">Proposed Voting Choices</h1>
+
+<p>Simple yes/no vote.</p>
+
+<h1 id="statistics">Statistics</h1>
+
+<p>To illustrate the use of union types in the wild, the use of union types in <code>@param</code> and <code>@return</code> annotations in phpdoc comments has been analyzed.</p>
+
+<p>In the top two thousand composer packages there are:</p>
+
+<ul>
+<li>25k parameter union types: <a href="https://gist.github.com/nikic/64ff90c5038522606643eac1259a9dae#file-param_union_types-json">Full JSON data</a></li>
+<li>14k return union types: <a href="https://gist.github.com/nikic/64ff90c5038522606643eac1259a9dae#file-return_union_types-json">Full JSON data</a></li>
+</ul>
+
+<p>In the PHP stubs for internal functions (these are incomplete right now, so the actual numbers should be at least twice as large) there are:</p>
+
+<ul>
+<li>336 union return types</li>
+<li>of which 312 include <code>false</code> as a value</li>
+</ul>
+
+<p>This illustrates that the <code>false</code> pseudo-type in unions is necessary to express the return type of many existing internal functions.</p>
+</div>
+
+        
+        
+
+        
+
+        
+    </div>
+</div>
+</section>
+<section class="secondscreen">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#proposal">Proposal</a>
+<ul>
+<li><a href="#supported-types">Supported Types</a>
+<ul>
+<li><a href="#void-type"><code>void</code> type</a></li>
+<li><a href="#nullable-union-types">Nullable union types</a></li>
+<li><a href="#false-pseudo-type"><code>false</code> pseudo-type</a></li>
+<li><a href="#duplicate-and-redundant-types">Duplicate and redundant types</a></li>
+<li><a href="#type-grammar">Type grammar</a></li>
+</ul></li>
+<li><a href="#variance">Variance</a>
+<ul>
+<li><a href="#property-types">Property types</a></li>
+<li><a href="#adding-and-removing-union-types">Adding and removing union types</a></li>
+<li><a href="#variance-of-individual-union-members">Variance of individual union members</a></li>
+</ul></li>
+<li><a href="#coercive-typing-mode">Coercive typing mode</a>
+<ul>
+<li><a href="#conversion-table">Conversion Table</a></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#alternatives">Alternatives</a></li>
+</ul></li>
+<li><a href="#property-types-and-references">Property types and references</a></li>
+<li><a href="#reflection">Reflection</a>
+<ul>
+<li><a href="#examples-1">Examples</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#backwards-incompatible-changes">Backwards Incompatible Changes</a></li>
+<li><a href="#future-scope">Future Scope</a>
+<ul>
+<li><a href="#intersection-types">Intersection Types</a></li>
+<li><a href="#mixed-type">Mixed Type</a></li>
+<li><a href="#literal-types">Literal Types</a></li>
+<li><a href="#type-aliases">Type Aliases</a></li>
+</ul></li>
+<li><a href="#proposed-voting-choices">Proposed Voting Choices</a></li>
+<li><a href="#statistics">Statistics</a></li>
+</ul>
+</nav>
+</section>
+</section>
+<footer>
+    <nav class="fullscreen">
+        <ul>
+            <li><a href="//php.net/copyright">Copyright © 2001-2019 The PHP Group</a></li>
+            <li><a href="//php.net/sites">Other PHP.net sites</a></li>
+            <li><a href="//php.net/privacy">Privacy policy</a></li>
+        </ul>
+    </nav>
+</footer>
+
+</div>
+</body>
+</html>
