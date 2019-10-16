@@ -1,10 +1,10 @@
 # see https://gohugo.io/getting-started/configuration/ for list of options
-baseURL = "https://brzuchal.github.io/php-dev/"
+baseURL = "https://phpinternal.github.io/wiki/"
 #relativeURLs = true
 languageCode = "en-us"
 title = "PHP RFC's"
 theme = "php"
-description	= "Description here"
+description	= "PHP Experimental Wiki Replacement"
 timezone = "Europe/London"
 footnoteReturnLinkContents = "^"
 enableGitInfo = true
